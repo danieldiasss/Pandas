@@ -20,13 +20,18 @@ df.isna().sum()
 df.isna().mean()
 
 # %%
-df.fillna({
-        "idade": df["idade"].mean(),
-        "renda":df["renda"].mean(),
-        })
+df.fillna(
+    {"idade": df["idade"].mean(),
+    "renda": df["renda"].mean(),
+          
+          })
 
 # %%
 df.dropna(subset=["idade", "renda"], how='any')
-
 # %%
-df.dropna(axis=1, thresh=3)
+df.dropna(subset=["idade", "renda"], how='all')
+# %%
+df.dropna(axis=1, how= "any")
+# %%
+df.dropna(axis=1, thresh=4)
+# %%
