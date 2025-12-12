@@ -1,13 +1,12 @@
-# %%
-
+#%%
 import pandas as pd
 import numpy as np
 
-# %%
-df = pd.read_csv("../data/customers.csv", sep=";")
+#%%
+df = pd.read_csv("../data/customers.csv" , sep= ";")
+df
 
 # %%
-
 df["Points_double"] = df["Points"] * 2
 df
 
@@ -25,13 +24,10 @@ df
 
 df["Points_log"] = np.log(df["Points"])
 df
-
-# %%
 np.log(df[["Points","Points_double","Points_ratio"]])
-
 # %%
 nomes_alta = []
-for i in df['Name']:
+for i in df["Name"]:
     nomes_alta.append(i.upper())
 
 df["Nome_Alta"] = nomes_alta
@@ -39,51 +35,49 @@ df
 
 # %%
 df["Name"].str.upper()
+df
 
 # %%
-
 def get_first(nome:str):
     nome = nome.upper()
     return nome.split("_")[0]
 
-
 # %%
-df["Name_First"] = df["Name"].apply( get_first )
+df["Name_First_Upper"] = df["Name"].apply(get_first)
 df
 
-# %%
-df["Name"].apply( lambda x: x.upper().split("_")[0] )
 
 # %%
+get_f = lambda nome: nome.split("_")[0]
+get_f("Téo")
 
+# %%
+df["Name"].apply(lambda x: x.upper().split("_")[0])
 
+# %%
 def intervalo_pontos(pontos):
     if pontos < 2500:
         return "baixo"
-    elif pontos < 3500:
+    elif pontos <3500:
         return "medio"
     else:
         return "alto"
     
 df["Faixa_Pontos"] = df["Points"].apply(intervalo_pontos)
 df
-
 # %%
 df["UUID"].apply(lambda x: x[-3:])
 
 # %%
 df
-
-
 # %%
 
 data = {
-    "nome": ["Teo", "Nah", "Maria", "Lara"],
+    "nome": ["Teo", "Nah", "Maria" , "Lara"],
     "recencia": [1,30,10,45],
-    "valor":[100,2000, 15, 500],
-    "frequencia":[2, 5, 1, 15]
+    "valor":[100,2000,15,500],
+    "frequencia":[2,5,1,15]
 }
-
 df_crm = pd.DataFrame(data)
 
 def rfv(row):
@@ -116,7 +110,6 @@ def rfv(row):
 # %%
 df_crm["RFV"] = df_crm.apply(rfv, axis=1)
 df_crm
-
 # %%
-
 df_crm.iloc[0]
+# %%
