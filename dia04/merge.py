@@ -8,8 +8,8 @@ data_users = {
     "idade": [31,31,32,32]
 }
 
-df_user = pd.DataFrame(data_users)
-df_user
+df_users = pd.DataFrame(data_users)
+df_users
 
 # %%
 
@@ -22,17 +22,20 @@ data_transacoes = {
 df_transacao = pd.DataFrame(data_transacoes)
 df_transacao
 
-# %%
 
-df_transacao.merge(df_user,
+# SELECT * FROM df_transacao
+# LEFT JOIN df_users
+# ON df_transacao.id_user= df_user.id
+# %%
+df_transacao.merge(df_users,
                    how='left',
-                   left_on=['id_user'],
-                   right_on=['id'],                   
+                   left_on='id_user',
+                   right_on='id',                   
                    )
 
 # %%
 
-df_transacao.merge(df_user,
+df_transacao.merge(df_users,
                    how='inner',
                    left_on=['id_user'],
                    right_on=['id'],                   
