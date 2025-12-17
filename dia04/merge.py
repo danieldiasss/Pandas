@@ -34,7 +34,6 @@ df_transacao.merge(df_users,
                    )
 
 # %%
-
 df_transacao.merge(df_users,
                    how='inner',
                    left_on=['id_user'],

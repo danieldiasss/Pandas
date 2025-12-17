@@ -23,3 +23,5 @@ for i in files:
 
 df_bia = pd.concat(dfs, axis=1).reset_index()
 df_bia.to_csv("../data/bia_consolidado.csv", sep=";", index=False)
+# %%
+df_bia
