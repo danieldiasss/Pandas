@@ -1,5 +1,4 @@
 # %%
-
 import pandas as pd
 import sqlalchemy
 
@@ -10,17 +9,13 @@ engine = sqlalchemy.create_engine("sqlite:///../data/database.db")
 
 # %%
 
-df_transactions_cart = pd.read_sql_table("transactions_cart", engine)
+df_transactions_cart =pd.read_sql_table("transactions_cart", engine)
 df_transactions_cart
-
 # %%
-
 query = "SELECT * FROM customers LIMIT 10"
 df_customers = pd.read_sql_query(query, engine)
 df_customers
-
 # %%
-
 query = """
 SELECT *
 FROM customers AS t1
@@ -31,10 +26,7 @@ LIMIT 10
 
 df_join = pd.read_sql_query(query, engine)
 df_join
-
 # %%
-
-
 data_01 = {
     "id": [1,2,3,4],
     "nome":["Teo", "Mat", "Nah", "Mah"],
@@ -50,14 +42,12 @@ data_02 = {
 
 df_02 = pd.DataFrame(data_02)
 
-# %%
-
+#%%
 df_01.to_sql("tb_fodase", engine, index=False)
 
+#%%
+df_02.to_sql("tb_fodase", engine, index=False, if_exists="append")
+
 # %%
-
-df_02.to_sql("tb_fodase", engine, index=False, if_exists="replace")
-
-# %%
-
 pd.read_sql("tb_fodase", engine)
+# %%
