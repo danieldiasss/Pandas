@@ -61,6 +61,5 @@ df_fatura_mes = (df_fatura_mes.pivot_table(columns="DtFatura",
                               .fillna(0)
                               .reset_index()
                               )
-
 # %%
 df_fatura_mes.to_excel("Fatura_detalhada.xlsx")
